@@ -30,11 +30,11 @@
   <body>
     <div class="container">
       <form>
-        <label for="num">Введите число от 18 до 50:</label>
+        <label for="num">Enter a number from 18 to 50:</label>
         <br />
         <input type="text" id="num" name="num" />
         <br />
-        <button type="submit" id="count">Возвести в квадрат</button>
+        <button type="submit" id="count">Square</button>
       </form>
       <div id="result"></div>
       <div id="error"></div>
@@ -54,14 +54,14 @@
         let inputVal = input.value;
 
         if (inputVal.replace(/\s/g, "").length === 0) {
-          err.innerHTML = "Введённое значение не должно быть пустым!";
+          err.innerHTML = "The entered value must not be empty!";
         } else if (isNaN(inputVal)) {
-          err.innerHTML = "Введённое значение не является числом!";
+          err.innerHTML = "The entered value is not a number!";
         } else if (+inputVal < 18 || +inputVal > 50) {
-          err.innerHTML = "Введённое значение не соответствует диапазону!";
+          err.innerHTML = "The entered value is out of range!";
         } else {
           const answer = squareNumber(+inputVal);
-          res.innerHTML = `Ответ: ${answer}`;
+          res.innerHTML = `Answer: ${answer}`;
         }
 
         input.value = "";
