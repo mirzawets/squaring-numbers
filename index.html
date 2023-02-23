@@ -44,9 +44,9 @@
       count.addEventListener("click", () => {
         event.preventDefault();
 
-        let input = document.getElementById("num");
-        let res = document.getElementById("result");
-        let err = document.getElementById("error");
+        const input = document.getElementById("num");
+        const res = document.getElementById("result");
+        const err = document.getElementById("error");
 
         res.innerHTML = "";
         err.innerHTML = "";
@@ -55,16 +55,18 @@
 
         if (inputVal.replace(/\s/g, "").length === 0) {
           err.innerHTML = "The entered value must not be empty!";
+          input.value = "";
         } else if (isNaN(inputVal)) {
           err.innerHTML = "The entered value is not a number!";
+          input.value = "";
         } else if (+inputVal < 18 || +inputVal > 50) {
           err.innerHTML = "The entered value is out of range!";
+          input.value = "";
         } else {
           const answer = squareNumber(+inputVal);
           res.innerHTML = `Answer: ${answer}`;
         }
 
-        input.value = "";
         input.focus();
       });
 
