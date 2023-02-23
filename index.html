@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Squaring numbers</title>
+    <style>
+      .container {
+        margin: 25px;
+      }
+
+      #num {
+        margin: 0 0 15px 0;
+      }
+
+      #count {
+        font-weight: bold;
+      }
+
+      #result {
+        margin: 15px 0 0 0;
+      }
+
+      #error {
+        color: #ff0000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <label for="num">Введите число от 18 до 50:</label>
+        <br />
+        <input type="text" id="num" name="num" />
+        <br />
+        <button type="submit" id="count">Возвести в квадрат</button>
+      </form>
+      <div id="result"></div>
+      <div id="error"></div>
+    </div>
+
+    <script>
+      count.addEventListener("click", () => {
+        event.preventDefault();
+
+        let input = document.getElementById("num");
+        let res = document.getElementById("result");
+        let err = document.getElementById("error");
+
+        res.innerHTML = "";
+        err.innerHTML = "";
+
+        let inputVal = input.value;
+
+        if (inputVal.replace(/\s/g, "").length === 0) {
+          err.innerHTML = "Введённое значение не должно быть пустым!";
+        } else if (isNaN(inputVal)) {
+          err.innerHTML = "Введённое значение не является числом!";
+        } else if (+inputVal < 18 || +inputVal > 50) {
+          err.innerHTML = "Введённое значение не соответствует диапазону!";
+        } else {
+          const answer = squareNumber(+inputVal);
+          res.innerHTML = `Ответ: ${answer}`;
+        }
+
+        input.value = "";
+        input.focus();
+      });
+
+      function squareNumber(num) {
+        return num * num;
+      }
+    </script>
+  </body>
+</html>
